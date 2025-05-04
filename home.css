@@ -1,0 +1,99 @@
+/* General body styling */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color:beige;
+    color: black;
+  }
+  
+  /* Header Section */
+  .home-header {
+    background: linear-gradient(135deg, #1dbf73, #38a1db);
+    padding: 20px;
+    text-align: center;
+    color: white;
+  }
+  
+  .home-header h1 {
+    margin: 0;
+    font-size: 3rem;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin: 0 15px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  nav ul li a:hover {
+    color: #f4f4f4;
+  }
+  
+  /* Hero Section Styling */
+  .hero-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: url('https://images.unsplash.com/photo-1571019613578-2b2b9c8d3e6b') no-repeat center center/cover;
+    color: white;
+  }
+  
+  .hero-section h2 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: black;
+  }
+  
+  .hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: black;
+  }
+  
+  .hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    color: black;
+  }
+  
+  .cta-button {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .cta-button:hover {
+    background-color: #ff4500;
+  }
+  
+  /* Footer Section */
+  .home-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #222;
+    color: white;
+  }
+  
+  .home-footer p {
+    margin: 0;
+  }
+  

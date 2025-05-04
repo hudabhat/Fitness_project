@@ -1,0 +1,120 @@
+/* General body styling */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  /* Header Section */
+  header {
+    background: linear-gradient(135deg, #FF7F50, #FF6347);
+    padding: 20px;
+    text-align: center;
+    color: black;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 3rem;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin: 0 15px;
+  }
+  
+  nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  nav ul li a:hover {
+    color: #f4f4f4;
+  }
+  
+  /* Section for Pricing */
+  section {
+    padding: 40px 20px;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 3rem;
+    color: #FF6347;
+    margin-bottom: 30px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    font-size: 1.2rem;
+    margin: 20px 0;
+  }
+  
+  strong {
+    color: #FF7F50;
+    font-size: 1.4rem;
+  }
+  
+  li::before {
+    content: "💪";
+    margin-right: 10px;
+    font-size: 1.5rem;
+  }
+  
+  /* Pricing Plan Styling */
+  ul li {
+    background-color: #FFEBE8;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  ul li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  ul li strong {
+    color: #FF4500;
+  }
+  
+  /* Footer Section */
+  footer {
+    background-color: #FF6347;
+    color: white;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  footer p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+  
+  footer p a {
+    color: #f4f4f4;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  footer p a:hover {
+    color: #FF4500;
+  }
+  
