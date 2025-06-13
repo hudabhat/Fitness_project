@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fitness Club | Home</title>
   <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="auth.css" />
 </head>
 <body>
 
@@ -28,13 +28,36 @@
   <section class="hero-section">
     <h2>Welcome to Fitness Club</h2>
     <p>Transform your body, mind, and soul with our expert-guided training programs.</p>
-    <img src="https://images.unsplash.com/photo-1571019613578-2b2b9c8d3e6b" alt="Fitness Club Hero Image" class="hero-image"/>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCNnfvZaVLa8okf75fny6q1DwNfyQvwODpMQ&s1" alt="Fitness Club Hero Image" class="hero-image"/>
     <button onclick="location.href='contact.html'" class="cta-button">Join Now</button>
+  </section>
+
+  <!-- Login & Signup Forms -->
+  <section class="auth-section">
+    <div class="form-container">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="text" id="loginUsername" placeholder="Username" required />
+        <input type="password" id="loginPassword" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <div class="form-container">
+      <h2>Signup</h2>
+      <form id="signupForm">
+        <input type="text" id="signupUsername" placeholder="Username" required />
+        <input type="password" id="signupPassword" placeholder="Password" required />
+        <button type="submit">Signup</button>
+      </form>
+    </div>
   </section>
 
   <footer class="home-footer">
     <p>&copy; 2025 Fitness Club. All rights reserved.</p>
   </footer>
 
+  <script src="auth.js"></script>
 </body>
 </html>
+
