@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login & Sign Up | Fitness Club</title>
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="form-box" id="formBox">
+      <div class="button-box">
+        <button onclick="showLogin()" id="loginBtn">Login</button>
+        <button onclick="showSignup()" id="signupBtn">Sign Up</button>
+      </div>
+
+      <form id="loginForm" class="form" onsubmit="return validateLogin()">
+        <h2>Login</h2>
+        <input type="email" id="loginEmail" placeholder="Email" />
+        <input type="password" id="loginPassword" placeholder="Password" />
+        <button type="submit">Login</button>
+      </form>
+
+      <form id="signupForm" class="form hidden" onsubmit="return validateSignup()">
+        <h2>Sign Up</h2>
+        <input type="text" id="signupName" placeholder="Full Name" />
+        <input type="email" id="signupEmail" placeholder="Email" />
+        <input type="password" id="signupPassword" placeholder="Password" />
+        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" />
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

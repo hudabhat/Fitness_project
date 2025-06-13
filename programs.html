@@ -6,6 +6,11 @@
   <title>Programs | Fitness Club</title>
   <link rel="stylesheet" href="program.css" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    ul li {
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -26,18 +31,27 @@
 
   <section>
     <h2>Our Programs</h2>
-    <ul>
-      <li><strong>Strength Training</strong> – Build muscle and tone your body</li>
-      <li><strong>Yoga & Meditation</strong> – Relax and improve flexibility</li>
-      <li><strong>Cardio Burn</strong> – Boost stamina with intense workouts</li>
-      <li><strong>Zumba Dance</strong> – Fun workouts to lively beats</li>
-      <li><strong>Nutrition Coaching</strong> – Personalized diet plans</li>
-      <li><strong>Weight Loss Program</strong> – Expert-led transformation plans</li>
+    <ul id="programList">
+      <li data-page="strength.html"><strong>Strength Training</strong> – Build muscle and tone your body</li>
+      <li data-page="yoga.html"><strong>Yoga & Meditation</strong> – Relax and improve flexibility</li>
+      <li data-page="cardio.html"><strong>Cardio Burn</strong> – Boost stamina with intense workouts</li>
+      <li data-page="zumba.html"><strong>Zumba Dance</strong> – Fun workouts to lively beats</li>
+      <li data-page="nutrition.html"><strong>Nutrition Coaching</strong> – Personalized diet plans</li>
+      <li data-page="weightloss.html"><strong>Weight Loss Program</strong> – Expert-led transformation plans</li>
     </ul>
   </section>
 
   <footer>
     <p>&copy; 2025 Fitness Club. All rights reserved.</p>
   </footer>
+
+  <script>
+    document.getElementById("programList").addEventListener("click", function(e) {
+      const target = e.target.closest("li");
+      if (target && target.dataset.page) {
+        window.location.href = target.dataset.page;
+      }
+    });
+  </script>
 </body>
 </html>
