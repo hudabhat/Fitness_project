@@ -1,10 +1,8 @@
-// SIGNUP
+// signup logic
 document.getElementById("signupForm").addEventListener("submit", function (e) {
   e.preventDefault();
-
-  const username = document.getElementById("signupUsername").value;
+  const username = document.getElementById("signupUsername")?.value || document.getElementById("signupEmail")?.value;
   const password = document.getElementById("signupPassword").value;
-
   if (localStorage.getItem(username)) {
     alert("User already exists!");
   } else {
@@ -14,23 +12,21 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
   }
 });
 
-// LOGIN
+// login logic
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
-
-  const username = document.getElementById("loginUsername").value;
+  const username = document.getElementById("loginUsername")?.value || document.getElementById("loginEmail")?.value;
   const password = document.getElementById("loginPassword").value;
-
   const storedUser = JSON.parse(localStorage.getItem(username));
-
   if (!storedUser) {
     alert("User not found. Please sign up first.");
   } else if (storedUser.password !== password) {
-    alert("Incorrect password.");
+    alert("Wrong password!");
   } else {
-    alert(`Welcome, ${username}! Login successful.`);
-    // Redirect or unlock features
+    window.location.href = "about.html";
   }
-
   document.getElementById("loginForm").reset();
 });
+
+// redirect or unlock
+
