@@ -30,3 +30,35 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
 
 // redirect or unlock
 
+
+// theme toggle
+(function() {
+  function setTheme(theme) {
+    document.body.classList.remove('light-theme', 'dark-theme');
+    document.body.classList.add(theme);
+    var btn = document.getElementById('theme-toggle-btn');
+    if (btn) {
+      btn.textContent = theme === 'dark-theme' ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+    localStorage.setItem('theme', theme);
+  }
+  function initThemeToggle() {
+    var btn = document.getElementById('theme-toggle-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+      var isDark = document.body.classList.contains('dark-theme');
+      setTheme(isDark ? 'light-theme' : 'dark-theme');
+    });
+    // set theme on load
+    var theme = localStorage.getItem('theme') || 'light-theme';
+    setTheme(theme);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThemeToggle);
+  } else {
+    initThemeToggle();
+  }
+})();
+
+// set theme on load
+
