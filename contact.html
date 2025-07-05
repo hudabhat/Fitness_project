@@ -6,11 +6,15 @@
   <title>Contact | Fitness Club</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="light-theme">
-  <button id="theme-toggle-btn" style="position:fixed;top:1rem;right:1rem;z-index:1000;padding:0.5rem 1.2rem;border-radius:20px;border:none;background:#eee;color:#222;cursor:pointer;">🌙 Dark Mode</button>
+  <button id="theme-toggle-btn" style="position:fixed;top:1rem;right:1rem;z-index:1000;padding:0.5rem 1.2rem;border-radius:20px;border:none;background:#eee;color:#222;cursor:pointer;">Dark Mode</button>
   <header>
-    <h1>Fitness Club</h1>
+    <div class="site-header">
+      <img src="fitnessclublogo.png" alt="Fitness Club Logo" class="logo">
+      <h1 class="site-title">Fitness Club</h1>
+    </div>
     <nav>
       <ul>
         <li><a href="homepage.html">Home</a></li>
@@ -31,7 +35,7 @@
     <div class="trainer-cards">
       <div class="card">
         <h4>Contact Information</h4>
-        <p>Email: info@fitnessclub.com<br>Phone: (123) 456-7890<br>Address: 123 Fitness St, Wellness City</p>
+        <p>Email: info@fitnessclub.com<br>Phone: 9419522888<br>Address: 190002, Noorbagh, Srinagar, J&K</p>
       </div>
       <div class="card">
         <h4>Send Us a Message</h4>
@@ -41,6 +45,23 @@
           <textarea placeholder="Your Message" required style="width:100%;margin-bottom:10px;padding:8px;"></textarea>
           <button type="submit" class="btn">Send</button>
         </form>
+      </div>
+      <div class="card">
+        <h4>Social Media</h4>
+        <div class="social-media-icons">
+          <a href="#" class="social-icon">
+            <i class="fab fa-instagram"></i>
+            <span>@fitnessclubofficial</span>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-facebook"></i>
+            <span>@fitnessclubofficial</span>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-twitter"></i>
+            <span>@fitnessclubofficial</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -57,7 +78,7 @@
         document.body.classList.add(theme);
         var btn = document.getElementById('theme-toggle-btn');
         if (btn) {
-          btn.textContent = theme === 'dark-theme' ? '☀️ Light Mode' : '🌙 Dark Mode';
+          btn.textContent = theme === 'dark-theme' ? 'Light Mode' : 'Dark Mode';
         }
         localStorage.setItem('theme', theme);
       }
