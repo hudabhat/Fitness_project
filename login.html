@@ -4,55 +4,109 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login | Fitness Club</title>
-  <link rel="stylesheet" href="auth.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      background: url('loginsignup.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-box {
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 2.5rem 2rem 1.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+      width: 100%;
+      max-width: 350px;
+      text-align: center;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 0.7rem;
+      margin: 0.7rem 0;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 1rem;
+    }
+    .login-box input::placeholder {
+      color: #eee;
+    }
+    .login-box button {
+      width: 100%;
+      padding: 0.7rem;
+      background: #1976d2;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .login-box button:hover {
+      background: #115293;
+    }
+    .login-box .signup-link {
+      display: block;
+      margin-top: 1.5rem;
+      color: #fff;
+      text-decoration: underline;
+      font-size: 0.98rem;
+      opacity: 0.85;
+    }
+    .login-box .signup-link:hover {
+      opacity: 1;
+      color: #ff9800;
+    }
+  </style>
 </head>
 <body>
-  <section class="auth-section">
-    <div class="form-container">
-      <h2>Login</h2>
-      <form id="loginForm">
-        <input type="text" id="loginUsername" placeholder="Username" required />
-        <input type="password" id="loginPassword" placeholder="Password" required />
-        <button type="submit">Login</button>
-      </form>
-    </div>
-
-    <div class="form-container">
-      <h2>Signup</h2>
-      <form id="signupForm">
-        <input type="text" id="signupUsername" placeholder="Username" required />
-        <input type="password" id="signupPassword" placeholder="Password" required />
-        <button type="submit">Signup</button>
-      </form>
-    </div>
-  </section>
-
+  <div class="login-box">
+    <h2>Login to Fitness Club</h2>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email" required />
+      <input type="password" id="loginPassword" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+    <a href="signup.html" class="signup-link">Don't have an account? Sign up</a>
+  </div>
+  <script src="auth.js"></script>
   <script>
-    // Signup Logic
-    document.getElementById("signupForm").addEventListener("submit", function(e) {
+    // Login form handler
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const username = document.getElementById("signupUsername").value;
-      const password = document.getElementById("signupPassword").value;
-      localStorage.setItem("user", JSON.stringify({ username, password }));
-      localStorage.setItem("isLoggedIn", "true");
-      window.location.href = "index.html";
-    });
-
-    // Login Logic
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const username = document.getElementById("loginUsername").value;
-      const password = document.getElementById("loginPassword").value;
-      const storedUser = JSON.parse(localStorage.getItem("user"));
-
-      if (storedUser && storedUser.username === username && storedUser.password === password) {
-        localStorage.setItem("isLoggedIn", "true");
-        window.location.href = "index.html";
+      
+      // Get form values
+      var email = document.getElementById('loginEmail').value;
+      var password = document.getElementById('loginPassword').value;
+      
+      // Simple validation
+      if (!email || !password) {
+        alert('Please fill in all fields');
+        return;
+      }
+      
+      // Check credentials (demo login)
+      if(email === 'hudabhat20041@gmail.com' && password === 'hudacutie123') {
+        // Set login flag in localStorage
+        localStorage.setItem('isLoggedIn', 'true');
+        
+        // Redirect to schedule page
+        window.location.href = 'schedule.html';
       } else {
-        alert("Invalid credentials. Try signing up if you don't have an account.");
+        alert('Incorrect email or password');
       }
     });
-   
   </script>
 </body>
 </html>
+
+
+
