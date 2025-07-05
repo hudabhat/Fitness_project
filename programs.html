@@ -4,54 +4,105 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Programs | Fitness Club</title>
-  <link rel="stylesheet" href="program.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <style>
-    ul li {
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="light-theme">
+  <button id="theme-toggle-btn" style="position:fixed;top:1rem;right:1rem;z-index:1000;padding:0.5rem 1.2rem;border-radius:20px;border:none;background:#eee;color:#222;cursor:pointer;">Dark Mode</button>
   <header>
-    <h1>Fitness Club</h1>
+    <div class="site-header">
+      <img src="fitnessclublogo.png" alt="Fitness Club Logo" class="logo">
+      <h1 class="site-title">Fitness Club</h1>
+    </div>
     <nav>
       <ul>
-        <li><a href="index.html"><i class="fas fa-home icon"></i>Home</a></li>
-        <li><a href="about.html"><i class="fas fa-users icon"></i>About</a></li>
-        <li><a href="programs.html"><i class="fas fa-dumbbell icon"></i>Programs</a></li>
-        <li><a href="schedule.html"><i class="fas fa-calendar icon"></i>Schedule</a></li>
-        <li><a href="pricing.html"><i class="fas fa-tags icon"></i>Pricing</a></li>
-        <li><a href="gallery.html"><i class="fas fa-image icon"></i>Gallery</a></li>
-        <li><a href="blog.html"><i class="fas fa-pen icon"></i>Blog</a></li>
-        <li><a href="contact.html"><i class="fas fa-envelope icon"></i>Contact</a></li>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="login.html">Login</a></li>
       </ul>
     </nav>
   </header>
 
   <section>
     <h2>Our Programs</h2>
-    <ul id="programList">
-      <li data-page="strength.html"><strong>Strength Training</strong> – Build muscle and tone your body</li>
-      <li data-page="yoga.html"><strong>Yoga & Meditation</strong> – Relax and improve flexibility</li>
-      <li data-page="cardio.html"><strong>Cardio Burn</strong> – Boost stamina with intense workouts</li>
-      <li data-page="zumba.html"><strong>Zumba Dance</strong> – Fun workouts to lively beats</li>
-      <li data-page="nutrition.html"><strong>Nutrition Coaching</strong> – Personalized diet plans</li>
-      <li data-page="weightloss.html"><strong>Weight Loss Program</strong> – Expert-led transformation plans</li>
-    </ul>
+    <div class="trainer-cards">
+      <div class="card" onclick="location.href='strength.html'" style="cursor:pointer;">
+        <img src="https://randomuser.me/api/portraits/men/77.jpg" alt="Rahul Sharma" style="width:80px;height:80px;border-radius:50%;margin-bottom:10px;" />
+        <h4>Strength Training</h4>
+        <p>Rahul Sharma</p>
+        <p>Build muscle and tone your body</p>
+      </div>
+      <div class="card" onclick="location.href='yoga.html'" style="cursor:pointer;">
+        <img src="https://randomuser.me/api/portraits/women/57.jpg" alt="Pooja Singh" style="width:80px;height:80px;border-radius:50%;margin-bottom:10px;" />
+        <h4>Yoga & Meditation</h4>
+        <p>Pooja Singh</p>
+        <p>Relax and improve flexibility</p>
+      </div>
+      <div class="card" onclick="location.href='cardio.html'" style="cursor:pointer;">
+        <img src="https://randomuser.me/api/portraits/women/40.jpg" alt="Ayesha Khan" style="width:80px;height:80px;border-radius:50%;margin-bottom:10px;" />
+        <h4>Cardio Burn</h4>
+        <p>Ayesha Khan</p>
+        <p>Boost stamina with intense workouts</p>
+      </div>
+      <div class="card" onclick="location.href='zumba.html'" style="cursor:pointer;">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Maria Fernandes" style="width:80px;height:80px;border-radius:50%;margin-bottom:10px;" />
+        <h4>Zumba Dance</h4>
+        <p>Maria Fernandes</p>
+        <p>Fun workouts to lively beats</p>
+      </div>
+      <div class="card" onclick="location.href='nutrition.html'" style="cursor:pointer;">
+        <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="Imran Sheikh" style="width:80px;height:80px;border-radius:50%;margin-bottom:10px;" />
+        <h4>Nutrition Coaching</h4>
+        <p>Imran Sheikh</p>
+        <p>Personalized diet plans</p>
+      </div>
+      <div class="card" onclick="location.href='weightloss.html'" style="cursor:pointer;">
+        <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="John Mathews" style="width:80px;height:80px;border-radius:50%;margin-bottom:10px;" />
+        <h4>Weight Loss Program</h4>
+        <p>John Mathews</p>
+        <p>Expert-led transformation plans</p>
+      </div>
+    </div>
   </section>
 
   <footer>
     <p>&copy; 2025 Fitness Club. All rights reserved.</p>
   </footer>
-
+  <script src="auth.js"></script>
   <script>
-    document.getElementById("programList").addEventListener("click", function(e) {
-      const target = e.target.closest("li");
-      if (target && target.dataset.page) {
-        window.location.href = target.dataset.page;
+    // theme toggle
+    (function() {
+      function setTheme(theme) {
+        document.body.classList.remove('light-theme', 'dark-theme');
+        document.body.classList.add(theme);
+        var btn = document.getElementById('theme-toggle-btn');
+        if (btn) {
+          btn.textContent = theme === 'dark-theme' ? 'Light Mode' : 'Dark Mode';
+        }
+        localStorage.setItem('theme', theme);
       }
-    });
+      function initThemeToggle() {
+        var btn = document.getElementById('theme-toggle-btn');
+        if (!btn) return;
+        btn.addEventListener('click', function() {
+          var isDark = document.body.classList.contains('dark-theme');
+          setTheme(isDark ? 'light-theme' : 'dark-theme');
+        });
+        var theme = localStorage.getItem('theme') || 'light-theme';
+        setTheme(theme);
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initThemeToggle);
+      } else {
+        initThemeToggle();
+      }
+    })();
   </script>
 </body>
 </html>
