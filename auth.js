@@ -1,64 +1,75 @@
-// signup logic
-document.getElementById("signupForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const username = document.getElementById("signupUsername")?.value || document.getElementById("signupEmail")?.value;
-  const password = document.getElementById("signupPassword").value;
-  if (localStorage.getItem(username)) {
-    alert("User already exists!");
-  } else {
-    localStorage.setItem(username, JSON.stringify({ password }));
-    alert("Signup successful! You can now log in.");
-    document.getElementById("signupForm").reset();
-  }
-});
-
-// login logic
-document.getElementById("loginForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const username = document.getElementById("loginUsername")?.value || document.getElementById("loginEmail")?.value;
-  const password = document.getElementById("loginPassword").value;
-  const storedUser = JSON.parse(localStorage.getItem(username));
-  if (!storedUser) {
-    alert("User not found. Please sign up first.");
-  } else if (storedUser.password !== password) {
-    alert("Wrong password!");
-  } else {
-    window.location.href = "about.html";
-  }
-  document.getElementById("loginForm").reset();
-});
-
-// redirect or unlock
-
-
-// theme toggle
+// Authentication and navigation management
 (function() {
-  function setTheme(theme) {
-    document.body.classList.remove('light-theme', 'dark-theme');
-    document.body.classList.add(theme);
-    var btn = document.getElementById('theme-toggle-btn');
-    if (btn) {
-      btn.textContent = theme === 'dark-theme' ? '☀️ Light Mode' : '🌙 Dark Mode';
+  'use strict';
+
+  // Check if user is logged in
+  function isUserLoggedIn() {
+    return localStorage.getItem('isLoggedIn') === 'true';
+  }
+
+  // Redirect to login if not authenticated
+  function requireAuth() {
+    if (!isUserLoggedIn()) {
+      window.location.href = 'login.html';
     }
-    localStorage.setItem('theme', theme);
   }
-  function initThemeToggle() {
-    var btn = document.getElementById('theme-toggle-btn');
-    if (!btn) return;
-    btn.addEventListener('click', function() {
-      var isDark = document.body.classList.contains('dark-theme');
-      setTheme(isDark ? 'light-theme' : 'dark-theme');
-    });
-    // set theme on load
-    var theme = localStorage.getItem('theme') || 'light-theme';
-    setTheme(theme);
+
+  // Update navigation based on login status
+  function updateNavigation() {
+    const nav = document.querySelector('nav ul');
+    if (!nav) return;
+
+    const blogLink = nav.querySelector('a[href="blog.html"]');
+    const scheduleLink = nav.querySelector('a[href="schedule.html"]');
+    const loginLink = nav.querySelector('a[href="login.html"]');
+
+    if (isUserLoggedIn()) {
+      // Show protected links, hide login link
+      if (blogLink) blogLink.parentElement.style.display = 'inline';
+      if (scheduleLink) scheduleLink.parentElement.style.display = 'inline';
+      if (loginLink) {
+        loginLink.textContent = 'Logout';
+        loginLink.href = '#';
+        loginLink.onclick = logout;
+      }
+    } else {
+      // Hide protected links, show login link
+      if (blogLink) blogLink.parentElement.style.display = 'none';
+      if (scheduleLink) scheduleLink.parentElement.style.display = 'none';
+      if (loginLink) {
+        loginLink.textContent = 'Login';
+        loginLink.href = 'login.html';
+        loginLink.onclick = null;
+      }
+    }
   }
+
+  // Logout function
+  function logout() {
+    localStorage.removeItem('isLoggedIn');
+    window.location.href = 'homepage.html';
+  }
+
+  // Initialize auth system
+  function initAuth() {
+    updateNavigation();
+    
+    // Check if current page requires auth
+    const currentPage = window.location.pathname.split('/').pop();
+    const protectedPages = ['blog.html', 'schedule.html'];
+    
+    if (protectedPages.includes(currentPage)) {
+      requireAuth();
+    }
+  }
+
+  // Run when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initThemeToggle);
+    document.addEventListener('DOMContentLoaded', initAuth);
   } else {
-    initThemeToggle();
+    initAuth();
   }
-})();
 
-// set theme on load
-
+  // Expose logout function globally
+  window.logout = logout;
+})(); 
