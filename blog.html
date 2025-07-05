@@ -8,9 +8,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <body class="light-theme">
-  <button id="theme-toggle-btn" style="position:fixed;top:1rem;right:1rem;z-index:1000;padding:0.5rem 1.2rem;border-radius:20px;border:none;background:#eee;color:#222;cursor:pointer;">🌙 Dark Mode</button>
+  <button id="theme-toggle-btn" style="position:fixed;top:1rem;right:1rem;z-index:1000;padding:0.5rem 1.2rem;border-radius:20px;border:none;background:#eee;color:#222;cursor:pointer;">Dark Mode</button>
   <header>
-    <h1>Fitness Club</h1>
+    <div class="site-header">
+      <img src="fitnessclublogo.png" alt="Fitness Club Logo" class="logo">
+      <h1 class="site-title">Fitness Club</h1>
+    </div>
     <nav>
       <ul>
         <li><a href="homepage.html">Home</a></li>
@@ -64,7 +67,7 @@
         document.body.classList.add(theme);
         var btn = document.getElementById('theme-toggle-btn');
         if (btn) {
-          btn.textContent = theme === 'dark-theme' ? '☀️ Light Mode' : '🌙 Dark Mode';
+          btn.textContent = theme === 'dark-theme' ? 'Light Mode' : 'Dark Mode';
         }
         localStorage.setItem('theme', theme);
       }
