@@ -18,7 +18,7 @@
     .signup-box {
       background: rgba(0,0,0,0.6);
       color: #fff;
-      padding: 2.5rem 2rem 1.5rem 2rem;
+      padding: 2.5rem 2rem;
       border-radius: 16px;
       box-shadow: 0 4px 32px rgba(0,0,0,0.3);
       width: 100%;
@@ -65,50 +65,84 @@
       opacity: 1;
       color: #ff9800;
     }
+    .error-message {
+      color: #ff6b6b;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .success-message {
+      color: #51cf66;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
   <div class="signup-box">
     <h2>Create Your Account</h2>
     <form id="signupForm">
-      <input type="text" id="signupFullName" placeholder="Full Name" required />
-      <input type="email" id="signupEmail" placeholder="Email" required />
-      <input type="tel" id="signupPhone" placeholder="Phone Number" required />
-      <input type="password" id="signupPassword" placeholder="Password" required />
-      <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required />
+      <input type="text" id="signupFullName" name="name" placeholder="Full Name" required />
+      <input type="email" id="signupEmail" name="email" placeholder="Email" required />
+      <input type="tel" id="signupPhone" name="phone" placeholder="Phone Number" required />
+      <input type="password" id="signupPassword" name="password" placeholder="Password" required />
+      <input type="password" id="signupConfirmPassword" name="confirmPassword" placeholder="Confirm Password" required />
       <button type="submit">Sign Up</button>
     </form>
+    <div id="message"></div>
     <a href="login.html" class="login-link">Already have an account? Login</a>
   </div>
-  <script src="auth.js"></script>
+
   <script>
-    // Signup form handler
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
+    document.getElementById('signupForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      
-      // Get form values
-      var fullName = document.getElementById('signupFullName').value;
-      var email = document.getElementById('signupEmail').value;
-      var phone = document.getElementById('signupPhone').value;
-      var password = document.getElementById('signupPassword').value;
-      var confirmPassword = document.getElementById('signupConfirmPassword').value;
-      
-      // Validate passwords match
-      if(password !== confirmPassword) {
-        alert("Passwords do not match!");
+
+      const name = document.getElementById('signupFullName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim();
+      const phone = document.getElementById('signupPhone').value.trim();
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('signupConfirmPassword').value;
+
+      if (!name || !email || !phone || !password || !confirmPassword) {
+        showMessage("Please fill in all fields!", 'error');
         return;
       }
-      
-      // Validate required fields
-      if (!fullName || !email || !phone || !password) {
-        alert("Please fill in all fields!");
+
+      if (password !== confirmPassword) {
+        showMessage("Passwords do not match!", 'error');
         return;
       }
-      
-      // Save signup info (demo - in real app would save to backend)
-      alert("Sign up successful! You can now log in.");
-      window.location.href = 'login.html';
+
+      try {
+        const response = await fetch('/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: new URLSearchParams({ name, email, phone, password, confirmPassword })
+        });
+
+        const text = await response.text();
+        
+        if (response.ok) {
+          showMessage('Signup successful! Redirecting to login...', 'success');
+          setTimeout(() => {
+            window.location.href = 'login.html';
+          }, 1500);
+        } else {
+          showMessage(text, 'error');
+        }
+
+      } catch (err) {
+        console.error("Signup failed:", err);
+        showMessage("Signup failed. Please try again.", 'error');
+      }
     });
+
+    function showMessage(message, type) {
+      const messageDiv = document.getElementById('message');
+      messageDiv.textContent = message;
+      messageDiv.className = type === 'error' ? 'error-message' : 'success-message';
+    }
   </script>
 </body>
-</html> 
+</html>

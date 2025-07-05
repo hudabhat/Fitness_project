@@ -1,21 +1,29 @@
 // Authentication and navigation management
-(function() {
+(function () {
   'use strict';
 
-  // Check if user is logged in
-  function isUserLoggedIn() {
-    return localStorage.getItem('isLoggedIn') === 'true';
+  // Check with server if user is logged in
+  async function isUserLoggedIn() {
+    try {
+      const response = await fetch('/auth-status', { credentials: 'include' });
+      const data = await response.json();
+      return data.loggedIn === true;
+    } catch (error) {
+      console.error('Error checking login status:', error);
+      return false;
+    }
   }
 
   // Redirect to login if not authenticated
-  function requireAuth() {
-    if (!isUserLoggedIn()) {
+  async function requireAuth() {
+    const loggedIn = await isUserLoggedIn();
+    if (!loggedIn) {
       window.location.href = 'login.html';
     }
   }
 
   // Update navigation based on login status
-  function updateNavigation() {
+  async function updateNavigation() {
     const nav = document.querySelector('nav ul');
     if (!nav) return;
 
@@ -23,8 +31,9 @@
     const scheduleLink = nav.querySelector('a[href="schedule.html"]');
     const loginLink = nav.querySelector('a[href="login.html"]');
 
-    if (isUserLoggedIn()) {
-      // Show protected links, hide login link
+    const loggedIn = await isUserLoggedIn();
+
+    if (loggedIn) {
       if (blogLink) blogLink.parentElement.style.display = 'inline';
       if (scheduleLink) scheduleLink.parentElement.style.display = 'inline';
       if (loginLink) {
@@ -33,7 +42,6 @@
         loginLink.onclick = logout;
       }
     } else {
-      // Hide protected links, show login link
       if (blogLink) blogLink.parentElement.style.display = 'none';
       if (scheduleLink) scheduleLink.parentElement.style.display = 'none';
       if (loginLink) {
@@ -45,21 +53,24 @@
   }
 
   // Logout function
-  function logout() {
-    localStorage.removeItem('isLoggedIn');
+  async function logout() {
+    try {
+      await fetch('/logout', { method: 'POST', credentials: 'include' });
+    } catch (err) {
+      console.error('Logout error:', err);
+    }
     window.location.href = 'homepage.html';
   }
 
   // Initialize auth system
-  function initAuth() {
-    updateNavigation();
-    
-    // Check if current page requires auth
+  async function initAuth() {
+    await updateNavigation();
+
     const currentPage = window.location.pathname.split('/').pop();
     const protectedPages = ['blog.html', 'schedule.html'];
-    
+
     if (protectedPages.includes(currentPage)) {
-      requireAuth();
+      await requireAuth();
     }
   }
 
@@ -70,6 +81,6 @@
     initAuth();
   }
 
-  // Expose logout function globally
   window.logout = logout;
-})(); 
+})();
+
