@@ -1,3 +1,23 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Video Background */
 .video-bg {
   position: fixed;
   top: 0;
@@ -7,6 +27,7 @@
   z-index: -2;
   overflow: hidden;
 }
+
 .video-bg video {
   width: 100vw;
   height: 100vh;
@@ -16,6 +37,7 @@
   left: 0;
   z-index: -2;
 }
+
 .video-bg::after {
   content: '';
   position: absolute;
@@ -28,81 +50,333 @@
   pointer-events: none;
 }
 
+/* Hero Content */
 .content-overlay {
   position: relative;
   z-index: 2;
   text-align: center;
   color: white;
   padding-top: 20vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-h1{
-    font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
-    font-size: 100px;
-    letter-spacing: 2px; 
-    text-transform: uppercase;
-    font-weight: bold;
-    margin: 0;
-    padding: 20px 0 0 0;
-    text-align: center;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-.p{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 32px;
-    font-weight: 400;
-    margin: 0;
-    text-align: center;
-    color: white;
-    
-}
-.hero-btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 12px 28px;
-  border: 2px solid white;
-  color: white;
-  background-color: transparent;
-  text-decoration: none;
+
+h1 {
+  font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
+  font-size: 100px;
+  letter-spacing: 2px; 
+  text-transform: uppercase;
   font-weight: bold;
+  margin: 0;
+  padding: 20px 0 0 0;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  margin: 20px 0 10px 0;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0 0 40px 0;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+}
+
+/* Enroll Button */
+.enroll-btn {
+  display: inline-block;
+  padding: 15px 40px;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
   border-radius: 50px;
   font-size: 1.2rem;
-  transition: 
-    background-color 0.3s ease,
-    color 0.3s ease,
-    opacity 0.3s ease,
-    transform 0.3s ease;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.hero-btn:hover {
-  background-color: white;
-  color: black;
-  opacity: 0.85;
-  transform: scale(1.05);
+.enroll-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+  background: linear-gradient(135deg, #ee5a24, #ff6b6b);
 }
 
-  
-  .about-section {
-    padding: 100px 20px;
-    background: #111;
-    color: white;
-    text-align: center;
+/* About Section */
+.about-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.about-section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.about-description {
+  font-size: 1.3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* Features Section */
+.features-section {
+  padding: 100px 0;
+  background: #f8f9fa;
+  position: relative;
+  z-index: 1;
+}
+
+.features-section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 60px;
+  color: #333;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.feature-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.feature-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Benefits Section */
+.benefits-section {
+  padding: 100px 0;
+  background: white;
+  position: relative;
+  z-index: 1;
+}
+
+.benefits-section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 60px;
+  color: #333;
+}
+
+.benefits-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.benefits-text h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.benefits-text ul {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.benefits-text li {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.enroll-btn-secondary {
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.enroll-btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.benefits-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.cta-section p {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.enroll-btn-large {
+  display: inline-block;
+  padding: 18px 50px;
+  background: white;
+  color: #ff6b6b;
+  text-decoration: none;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.enroll-btn-large:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+  background: #f8f9fa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 60px;
   }
   
-  .about-section h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
-    margin-bottom: 20px;
+  .hero-subtitle {
+    font-size: 20px;
   }
   
-  .about-section p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.6;
+  .hero-description {
+    font-size: 16px;
   }
   
-  html {
-    scroll-behavior: smooth;
+  .about-section h2,
+  .features-section h2,
+  .benefits-section h2,
+  .cta-section h2 {
+    font-size: 2.5rem;
   }
   
+  .benefits-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .enroll-btn,
+  .enroll-btn-secondary,
+  .enroll-btn-large {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 40px;
+  }
+  
+  .hero-subtitle {
+    font-size: 18px;
+  }
+  
+  .hero-description {
+    font-size: 14px;
+  }
+  
+  .about-section,
+  .features-section,
+  .benefits-section,
+  .cta-section {
+    padding: 60px 0;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}

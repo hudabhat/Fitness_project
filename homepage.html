@@ -3,23 +3,141 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fitness Club | Home</title>
+  <title>Fitness Club | Transform Your Life</title>
   <link rel="stylesheet" href="homepage.css" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="video-bg">
-
+  <!-- Hero Section with Video Background -->
+  <div class="video-bg">
     <video autoplay muted loop id="bgVideo">
       <source src="6388396-uhd_2160_3840_25fps(1).mp4" type="video/mp4">
     </video>
     <div class="content-overlay">
       <h1>Fitness Club</h1>
-      <p class="p">Stronger Starts Here.</p>
-      <a href="about.html" class="hero-btn">Learn More</a>
+      <p class="hero-subtitle">Transform Your Body, Mind & Soul</p>
+      <p class="hero-description">Start your fitness journey today and discover the best version of yourself</p>
+      <button class="enroll-btn" onclick="enrollNow()">Enroll Now</button>
     </div>
   </div>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
+      <h2>Welcome to Fitness Club</h2>
+      <p class="about-description">
+        We are more than just a gym - we're a community dedicated to helping you achieve your fitness goals 
+        and transform your life. Our state-of-the-art facilities, expert trainers, and supportive environment 
+        make us the perfect place to start or continue your fitness journey.
+      </p>
+    </div>
+  </section>
+
+  <!-- What We Offer Section -->
+  <section class="features-section">
+    <div class="container">
+      <h2>What We Offer</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💪</div>
+          <h3>Personal Training</h3>
+          <p>One-on-one sessions with certified trainers to help you reach your specific goals faster and safer.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏃‍♀️</div>
+          <h3>Group Classes</h3>
+          <p>High-energy group sessions including HIIT, yoga, spinning, and strength training to keep you motivated.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🥗</div>
+          <h3>Nutrition Guidance</h3>
+          <p>Expert nutrition advice and meal planning to complement your workout routine and maximize results.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Progress Tracking</h3>
+          <p>Advanced tracking systems to monitor your progress and celebrate your achievements along the way.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏋️‍♂️</div>
+          <h3>Modern Equipment</h3>
+          <p>State-of-the-art fitness equipment and facilities to provide you with the best workout experience.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>Community Support</h3>
+          <p>Join a supportive community of fitness enthusiasts who will motivate and inspire you every step.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section">
+    <div class="container">
+      <h2>Why Choose Fitness Club?</h2>
+      <div class="benefits-content">
+        <div class="benefits-text">
+          <h3>Your Fitness Journey Starts Here</h3>
+          <ul>
+            <li>✅ <strong>Expert Guidance:</strong> Certified trainers with years of experience</li>
+            <li>✅ <strong>Flexible Schedules:</strong> Classes and sessions available throughout the day</li>
+            <li>✅ <strong>Personalized Plans:</strong> Custom workout and nutrition plans for your goals</li>
+            <li>✅ <strong>Modern Facilities:</strong> Clean, well-maintained equipment and spaces</li>
+            <li>✅ <strong>Supportive Environment:</strong> Welcoming community for all fitness levels</li>
+            <li>✅ <strong>Proven Results:</strong> Thousands of success stories from our members</li>
+          </ul>
+          <button class="enroll-btn-secondary" onclick="enrollNow()">Start Your Journey</button>
+        </div>
+        <div class="benefits-image">
+          <img src="gymfloor.jpg" alt="Fitness Club Facilities" class="benefits-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Transform Your Life?</h2>
+      <p>Join thousands of members who have already started their fitness journey with us.</p>
+      <button class="enroll-btn-large" onclick="enrollNow()">Enroll Now</button>
+    </div>
+  </section>
+
   <script src="auth.js"></script>
+  <script>
+    function enrollNow() {
+      // Check if user is logged in
+      fetch('/auth-status', { credentials: 'include' })
+        .then(response => response.json())
+        .then(data => {
+          if (data.loggedIn) {
+            // User is logged in, redirect to programs or main features
+            window.location.href = 'programs.html';
+          } else {
+            // User is not logged in, redirect to login page
+            window.location.href = 'login.html';
+          }
+        })
+        .catch(error => {
+          console.error('Error checking auth status:', error);
+          // Fallback to login page
+          window.location.href = 'login.html';
+        });
+    }
+
+    // Add smooth scrolling for better UX
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
   

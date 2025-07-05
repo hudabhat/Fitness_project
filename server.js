@@ -20,7 +20,7 @@ app.use(session({
 
 // Serve HTML files
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'homepage.html'));
 });
 
 app.get('/homepage.html', (req, res) => {
@@ -105,5 +105,6 @@ app.post('/logout', (req, res) => {
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
+  console.log(`Homepage available at http://localhost:${PORT}/`);
 });
 
