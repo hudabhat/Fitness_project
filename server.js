@@ -9,7 +9,16 @@ const PORT = 5500;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('.')); // Serve all static files from current directory
+app.use(express.static('.', {
+  setHeaders: (res, path) => {
+    // Disable caching for HTML files
+    if (path.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      res.setHeader('Pragma', 'no-cache');
+      res.setHeader('Expires', '0');
+    }
+  }
+})); // Serve all static files from current directory
 
 app.use(session({
   secret: 'iwt@project', // change this to something secure
@@ -20,10 +29,16 @@ app.use(session({
 
 // Serve HTML files
 app.get('/', (req, res) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(__dirname, 'homepage.html'));
 });
 
 app.get('/homepage.html', (req, res) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(__dirname, 'homepage.html'));
 });
 
