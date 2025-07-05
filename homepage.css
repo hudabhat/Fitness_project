@@ -1,0 +1,108 @@
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  overflow: hidden;
+}
+.video-bg video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+.video-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.45);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.content-overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding-top: 20vh;
+}
+h1{
+    font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
+    font-size: 100px;
+    letter-spacing: 2px; 
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0;
+    padding: 20px 0 0 0;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.p{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+    color: white;
+    
+}
+.hero-btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 28px;
+  border: 2px solid white;
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  transition: 
+    background-color 0.3s ease,
+    color 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: white;
+  color: black;
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+  
+  .about-section {
+    padding: 100px 20px;
+    background: #111;
+    color: white;
+    text-align: center;
+  }
+  
+  .about-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .about-section p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  

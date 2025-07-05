@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up | Fitness Club</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      background: url('loginsignup.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .signup-box {
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 2.5rem 2rem 1.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+      width: 100%;
+      max-width: 370px;
+      text-align: center;
+    }
+    .signup-box input {
+      width: 100%;
+      padding: 0.7rem;
+      margin: 0.7rem 0;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 1rem;
+    }
+    .signup-box input::placeholder {
+      color: #eee;
+    }
+    .signup-box button {
+      width: 100%;
+      padding: 0.7rem;
+      background: #1976d2;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .signup-box button:hover {
+      background: #115293;
+    }
+    .signup-box .login-link {
+      display: block;
+      margin-top: 1.5rem;
+      color: #fff;
+      text-decoration: underline;
+      font-size: 0.98rem;
+      opacity: 0.85;
+    }
+    .signup-box .login-link:hover {
+      opacity: 1;
+      color: #ff9800;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-box">
+    <h2>Create Your Account</h2>
+    <form id="signupForm">
+      <input type="text" id="signupFullName" placeholder="Full Name" required />
+      <input type="email" id="signupEmail" placeholder="Email" required />
+      <input type="tel" id="signupPhone" placeholder="Phone Number" required />
+      <input type="password" id="signupPassword" placeholder="Password" required />
+      <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required />
+      <button type="submit">Sign Up</button>
+    </form>
+    <a href="login.html" class="login-link">Already have an account? Login</a>
+  </div>
+  <script src="auth.js"></script>
+  <script>
+    // Signup form handler
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      var fullName = document.getElementById('signupFullName').value;
+      var email = document.getElementById('signupEmail').value;
+      var phone = document.getElementById('signupPhone').value;
+      var password = document.getElementById('signupPassword').value;
+      var confirmPassword = document.getElementById('signupConfirmPassword').value;
+      
+      // Validate passwords match
+      if(password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+      
+      // Validate required fields
+      if (!fullName || !email || !phone || !password) {
+        alert("Please fill in all fields!");
+        return;
+      }
+      
+      // Save signup info (demo - in real app would save to backend)
+      alert("Sign up successful! You can now log in.");
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html> 

@@ -70,7 +70,153 @@ footer {
   text-align: center;
   padding: 20px;
   margin-top: 40px;
+  color: #fff !important;
 }
+footer, footer * {
+  color: #fff !important;
+}
+
+/* Enroll Section Styles */
+.enroll-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  margin: 40px auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.enroll-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.enroll-section h2 {
+  color: white;
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.enroll-section p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  margin-bottom: 32px;
+}
+
+.enroll-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 16px 40px;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+.enroll-btn:hover {
+  background: #e68900;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+}
+
+/* Dark theme adjustments for enroll section */
+body.dark-theme .enroll-section {
+  background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+}
+
+/* Responsive styles for site header */
+@media (max-width: 768px) {
+  .site-header {
+    gap: 15px;
+    padding: 15px 0 0 0;
+  }
+  
+  .logo {
+    height: 60px;
+  }
+  
+  .site-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    gap: 10px;
+    padding: 10px 0 0 0;
+  }
+  
+  .logo {
+    height: 50px;
+  }
+  
+  .site-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Social Media Icons */
+.social-media-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.social-icon:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.social-icon i {
+  font-size: 1.5rem;
+  width: 24px;
+  text-align: center;
+}
+
+.social-icon span {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Social media specific colors */
+.social-icon:hover i.fa-instagram {
+  color: #e4405f;
+}
+
+.social-icon:hover i.fa-facebook {
+  color: #1877f2;
+}
+
+.social-icon:hover i.fa-twitter {
+  color: #1da1f2;
+}
+
+/* Dark theme adjustments for social media */
+body.dark-theme .social-icon {
+  color: #fff;
+}
+
+body.dark-theme .social-icon span {
+  color: #fff;
+}
+
 
 img {
   max-width: 100%;
@@ -82,3 +228,365 @@ img {
   margin-right: 8px;
   color: #0b5d1e;
 }
+
+/* =============================
+   Fitness Club Unified Styles
+   ============================= */
+:root {
+  --primary: #1976d2;
+  --primary-dark: #115293;
+  --accent: #ff9800;
+  --background: #fff;
+  --card-bg: #f5faff;
+  --text: #222;
+  --text-light: #666;
+  --btn-bg: #1976d2;
+  --btn-text: #fff;
+  --header-bg: #1976d2;
+  --header-text: #fff;
+  --footer-bg: #1976d2;
+  --footer-text: #fff;
+  --border-radius: 12px;
+  --shadow: 0 2px 12px rgba(30, 144, 255, 0.08);
+  --theme-toggle-bg: #fff;
+  --theme-toggle-text: #1976d2;
+  --theme-toggle-border: #1976d2;
+  --font-main: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--background);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header {
+  background: var(--header-bg);
+  color: var(--header-text);
+  padding: 0 0 10px 0;
+  box-shadow: var(--shadow);
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0 0 0;
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+}
+
+.site-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  margin: 0;
+  color: var(--header-text);
+}
+header h1 {
+  margin: 0;
+  padding: 20px 0 0 0;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  text-align: center;
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 0 0 0;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.05rem;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: var(--accent);
+}
+
+section {
+  max-width: 900px;
+  margin: 40px auto 0 auto;
+  padding: 32px 24px;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+h2, h3, h4 {
+  font-family: var(--font-main);
+  color: var(--primary-dark);
+  margin-top: 0;
+}
+h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+h4 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+p {
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+
+.trainer-cards {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 20px 16px;
+  flex: 1 1 220px;
+  min-width: 220px;
+  max-width: 260px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: var(--text);
+  border: 1px solid var(--primary);
+}
+.card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 4px 24px rgba(30, 144, 255, 0.15);
+}
+.card img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 0;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card h4 {
+  margin: 8px 0 4px 0;
+  color: var(--primary-dark);
+}
+.card p {
+  font-size: 0.98rem;
+  color: var(--text-light);
+}
+
+.trainer-cards .card p {
+  color: #111;
+}
+body.dark-theme .trainer-cards .card p {
+  color: #fff;
+}
+
+/* Center and style the testimonials heading */
+.testimonials h2 {
+  text-align: center;
+  font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+
+/* Testimonials as cards */
+.testimonial-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+.testimonial-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(30, 144, 255, 0.10);
+  padding: 28px 24px;
+  max-width: 320px;
+  min-width: 220px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.testimonial-card blockquote {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #444;
+  margin: 0 0 12px 0;
+}
+.testimonial-card cite {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #1976d2;
+}
+
+.cta {
+  text-align: center;
+  margin: 32px 0 0 0;
+}
+.cta h3 {
+  margin-bottom: 18px;
+  color: var(--accent);
+}
+.btn {
+  display: inline-block;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  padding: 12px 32px;
+  border-radius: 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: background 0.2s, transform 0.2s;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px) scale(1.04);
+}
+
+footer {
+  background: var(--footer-bg);
+  color: #efecec;
+  text-align: center;
+  padding: 18px 0 10px 0;
+  font-size: 1.1rem;
+  margin-top: 40px;
+  color: #fff !important;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  section {
+    max-width: 98vw;
+    padding: 18px 6vw;
+  }
+  .trainer-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.4rem;
+  }
+  nav ul {
+    gap: 14px;
+    font-size: 0.98rem;
+  }
+  section {
+    padding: 12px 2vw;
+  }
+  .card {
+    min-width: 90vw;
+    max-width: 98vw;
+  }
+  .btn {
+    padding: 10px 18px;
+    font-size: 1rem;
+  }
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: var(--theme-toggle-bg);
+  color: var(--theme-toggle-text);
+  border: 1px solid var(--theme-toggle-border);
+  border-radius: 20px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, color 0.2s;
+}
+.theme-toggle:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+body.light-theme {
+  background: #fff;
+  color: #222;
+}
+body.light-theme header,
+body.light-theme footer {
+  background: #1976d2;
+  color: #fff;
+}
+body.light-theme nav ul li a {
+  color: #fff;
+}
+body.light-theme .card {
+  background: #f5faff;
+  color: #222;
+  border: 1px solid #1976d2;
+}
+body.light-theme .btn {
+  background: #1976d2;
+  color: #fff;
+}
+body.light-theme .schedule-table, body.light-theme .schedule-table th, body.light-theme .schedule-table td {
+  color: #222;
+}
+
+body.dark-theme {
+  background: #181818;
+  color: #f1f1f1;
+}
+body.dark-theme header,
+body.dark-theme footer {
+  background: #1976d2;
+  color: #fff;
+}
+body.dark-theme nav ul li a {
+  color: #fff;
+}
+body.dark-theme .card {
+  background: #181c24;
+  color: #e3e3e3;
+  border: 1px solid #1976d2;
+}
+body.dark-theme .btn {
+  background: #1976d2;
+  color: #fff;
+}
+body.dark-theme .schedule-table, body.dark-theme .schedule-table th, body.dark-theme .schedule-table td {
+  color: #010101;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+h1 {
+  font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
+  font-size: 64px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0;
+  padding: 20px 0 0 0;
+  text-align: center;
+}
+
+
